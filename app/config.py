@@ -22,4 +22,8 @@ class Settings:
     # Medium scraper settings
     MEDIUM_COOKIES: str = os.getenv("MEDIUM_COOKIES", '')
 
+    # Redis settings
+    REDIS_URL: str = os.getenv("REDIS_URL", "")
+    REDIS_TOKEN: str = os.getenv("REDIS_TOKEN", "")
+
 settings = Settings()
