@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Medium Article Scraper</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Enter a Medium article URL to extract and display its content:</p>
+
+                <form action="{{ url_for('scrape_medium_article') }}" method="post" class="mb-4">
+                    <div class="mb-3">
+                        <label for="url" class="form-label">Medium Article URL:</label>
+                        <input type="text" class="form-control" id="url" name="url"
+                               placeholder="https://medium.com/@author/article-title" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Scrape Article</button>
+                </form>
+
+                <div class="alert alert-info">
+                    <h5>How it works:</h5>
+                    <ul class="mb-0">
+                        <li>Extracts article title, author, and content</li>
+                        <li>Displays reading time and tags if available</li>
+                        <li>Presents content in a clean, readable format</li>
+                        <li>Preserves links to the original article</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h6>Note:</h6>
+                    <p class="mb-0">Some Medium articles may require authentication or have paywalls. The scraper works best with publicly accessible articles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

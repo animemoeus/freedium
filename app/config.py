@@ -1,5 +1,9 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 class Settings:
     PROJECT_NAME: str = "Freedium"
@@ -14,5 +18,8 @@ class Settings:
     # Server settings
     HOST: str = os.getenv("HOST", "0.0.0.0")
     PORT: int = int(os.getenv("PORT", "8000"))
+
+    # Medium scraper settings
+    MEDIUM_COOKIES: str = os.getenv("MEDIUM_COOKIES", '')
 
 settings = Settings()

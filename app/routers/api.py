@@ -16,3 +16,4 @@ def validate_url(url: str = ""):
         raise HTTPException(status_code=400, detail="URL is not valid")
 
     return {"url": url, "valid": True}
+
