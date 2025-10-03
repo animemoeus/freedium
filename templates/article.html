@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        {% if error %}
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">Error</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <h5 class="alert-heading">❌ Failed to scrape article</h5>
+                        <p class="mb-0">{{ error }}</p>
+                    </div>
+                    <a href="{{ url_for('medium_scraper') }}" class="btn btn-primary">Try Another URL</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h1 class="mb-0">{{ article.title or "Untitled Article" }}</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {% if article.author %}
+                                <p><strong>Author:</strong> {{ article.author }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {% if article.reading_time %}
+                                <p><strong>Reading Time:</strong> {{ article.reading_time }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if article.tags %}
+                        <div class="mb-3">
+                            <strong>Tags:</strong>
+                            {% for tag in article.tags %}
+                                <span class="badge bg-secondary me-1">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <strong>Original URL:</strong>
+                        <a href="{{ article.url }}" target="_blank" class="text-break">{{ article.url }}</a>
+                    </div>
+
+                    <hr>
+
+                    {% if article.content_html %}
+                        <div class="article-content">
+                            <h4>Article Content</h4>
+                            <div class="content-html" style="line-height: 1.6; font-size: 1.1rem;">
+                                {{ article.content_html | safe }}
+                            </div>
+                        </div>
+                    {% elif article.content %}
+                        <div class="article-content">
+                            <h4>Article Content</h4>
+                            <div class="content-text" style="line-height: 1.6; font-size: 1.1rem;">
+                                {{ article.content | replace('\n\n', '</p><p>') | safe }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning">
+                            <p class="mb-0">Content could not be extracted from this article.</p>
+                        </div>
+                    {% endif %}
+
+                    <hr>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('medium_scraper') }}" class="btn btn-primary">Scrape Another Article</a>
+                        <a href="{{ article.url }}" target="_blank" class="btn btn-outline-secondary">View Original</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.content-text p {
+    margin-bottom: 1rem;
+}
+.article-content {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.375rem;
+    border-left: 4px solid #0d6efd;
+}
+.content-html img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 0.375rem;
+}
+.content-html figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+.content-html figcaption {
+    font-style: italic;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+</style>
+{% endblock %}
