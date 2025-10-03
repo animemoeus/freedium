@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">About Freedium</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">A modern FastAPI application with template rendering capabilities.</p>
+
+                <h4>Project Structure</h4>
+                <ul>
+                    <li><strong>app/</strong> - Main application code</li>
+                    <li><strong>app/routers/</strong> - API and web route handlers</li>
+                    <li><strong>app/services/</strong> - Business logic services</li>
+                    <li><strong>templates/</strong> - Jinja2 HTML templates</li>
+                    <li><strong>static/</strong> - CSS, JavaScript, and images</li>
+                    <li><strong>tests/</strong> - Unit tests</li>
+                </ul>
+
+                <h4>Technologies Used</h4>
+                <ul>
+                    <li>FastAPI - Modern, fast web framework</li>
+                    <li>Jinja2 - Template engine for Python</li>
+                    <li>Bootstrap 5 - CSS framework</li>
+                    <li>Uvicorn - ASGI server</li>
+                </ul>
+
+                <h4>API Endpoints</h4>
+                <ul>
+                    <li><code>GET /api/</code> - API root endpoint</li>
+                    <li><code>GET /api/validate-url</code> - URL validation API</li>
+                </ul>
+
+                <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

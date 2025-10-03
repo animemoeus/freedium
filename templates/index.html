@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">URL Validator</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Enter a URL to validate its format:</p>
+
+                <form action="{{ url_for('validate_url_form') }}" method="post" class="mb-4">
+                    <div class="mb-3">
+                        <label for="url" class="form-label">URL:</label>
+                        <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Validate URL</button>
+                </form>
+
+                <div class="alert alert-info">
+                    <h5>Features:</h5>
+                    <ul class="mb-0">
+                        <li>FastAPI backend with Jinja2 templates</li>
+                        <li>Modular project structure</li>
+                        <li>Static file serving</li>
+                        <li>Form handling</li>
+                        <li>Bootstrap UI framework</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

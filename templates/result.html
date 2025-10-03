@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Validation Result</h2>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <strong>URL:</strong> {{ url }}
+                </div>
+
+                {% if is_valid %}
+                    <div class="alert alert-success">
+                        <h5 class="alert-heading">✅ Valid URL!</h5>
+                        <p class="mb-0">The URL format is correct and valid.</p>
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        <h5 class="alert-heading">❌ Invalid URL!</h5>
+                        <p class="mb-0">The URL format is not valid. Please check and try again.</p>
+                    </div>
+                {% endif %}
+
+                <a href="{{ url_for('home') }}" class="btn btn-primary">Validate Another URL</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
