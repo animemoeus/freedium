@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      image: freedium
       target: base
     ports:
       - "64110:8000"
