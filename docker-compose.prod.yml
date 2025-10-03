@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
       target: base
     ports:
-      - "8000:8000"
+      - "64110:8000"
     environment:
       - DEBUG=false
       - HOST=0.0.0.0
