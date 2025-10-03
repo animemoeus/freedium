@@ -14,4 +14,10 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
     env_file:
       - .env
-    restart: always
+    restart: unless-stppped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/api/health', timeout=10)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
