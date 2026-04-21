@@ -6,5 +6,5 @@ uvicorn[standard]==0.24.0
 requests==2.31.0
 beautifulsoup4==4.14.2
 validators==0.22.0
-lxml==6.0.2
+lxml==6.1.0
 upstash-redis==1.4.0
